@@ -7,13 +7,17 @@ http.createServer(function(request, response) {
    	   fs.createReadStream(__dirname +'/index.htm').pipe(response);
    }
 
-   if (request.url === '/api') {
+   else if (request.url === '/api') {
    	response.writeHead(200, {'Content-Type': 'application/json'});
    	var obj ={
    		firstname: 'John',
    		lastname: 'Doe'
    	};
    	response.end(JSON.stringify(obj));
+   }
+   else{
+   	writeHead(404);
+   	response.end();
    }
 
     
