@@ -2,10 +2,11 @@ var http = require('http');
 var fs = require('fs');
 
 http.createServer(function(request, response) {
-    response.writeHead(200, { 'Content-Type': 'text/html' });
-    var html = fs.readFileSync(__dirname + '/index.htm', 'utf8');
-       var message = "Hello from earth...";
-    html = html.replace('{Message}', message);
-    response.end(html);
- 
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    var obj = {
+    	 firstname: 'John',
+    	 lastname: 'Doe'
+    };
+   response.end(JSON.stringify(obj));
+    
 }).listen(1337, '127.0.0.1');
